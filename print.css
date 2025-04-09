@@ -1,0 +1,319 @@
+/* A3 한 장 인쇄용 스타일시트 (세로 방향) */
+
+@page {
+    size: A3 portrait; /* A3 사이즈: 297mm × 420mm (세로 방향) */
+    margin: 10mm;
+}
+
+@media print {
+    /* 기본 설정 */
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 10pt;
+        background: white !important;
+        color: black !important;
+        overflow: hidden;
+    }
+    
+    /* 웹사이트의 모든 요소 초기에 숨김 */
+    body > * {
+        display: none !important;
+    }
+    
+    /* 인쇄용 레이아웃만 표시 */
+    .print-only {
+        display: block !important;
+    }
+    
+    /* 인쇄용 배경 그라데이션 */
+    .print-container {
+        position: relative !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto auto auto auto !important;
+        gap: 8mm !important;
+        height: 400mm !important; /* A3 높이에서 여백 제외 */
+        width: 277mm !important; /* A3 너비에서 여백 제외 */
+        padding: 5mm !important;
+        background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%) !important;
+        overflow: hidden !important;
+    }
+    
+    /* 배경 요소 */
+    .print-bg-element {
+        position: absolute !important;
+        background: rgba(59, 91, 219, 0.03) !important;
+        border-radius: 50% !important;
+    }
+    
+    /* 인쇄용 헤더 영역 */
+    .print-header {
+        grid-column: 1 / -1 !important;
+        border-bottom: 1px solid rgba(59, 91, 219, 0.2) !important;
+        padding-bottom: 5mm !important;
+        margin-bottom: 5mm !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        position: relative !important;
+    }
+    
+    /* 글라스모피즘 효과 */
+    .print-glassmorphism {
+        background: rgba(255, 255, 255, 0.8) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1) !important;
+        border-radius: 5mm !important;
+    }
+    
+    /* 섹션 공통 스타일 */
+    .print-section {
+        background: rgba(255, 255, 255, 0.8) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1) !important;
+        border-radius: 5mm !important;
+        padding: 5mm !important;
+        page-break-inside: avoid !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+    
+    /* 주요 문구 섹션 */
+    .print-catchphrase {
+        grid-column: 1 / -1 !important;
+        text-align: center !important;
+        padding: 5mm 10mm !important;
+        position: relative !important;
+    }
+    
+    .print-catchphrase h2 {
+        font-size: 18pt !important;
+        font-weight: bold !important;
+        color: #3b5bdb !important;
+        margin: 0 0 2mm 0 !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+    
+    .print-catchphrase p {
+        font-size: 11pt !important;
+        color: #555 !important;
+        margin: 0 !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+    
+    /* 섹션 헤더 */
+    .print-section h3 {
+        margin-top: 0 !important;
+        margin-bottom: 3mm !important;
+        font-size: 14pt !important;
+        color: #3b5bdb !important;
+        border-bottom: 1px solid rgba(59, 91, 219, 0.2) !important;
+        padding-bottom: 2mm !important;
+        position: relative !important;
+    }
+    
+    /* 아이콘 배지 */
+    .print-section h3::before {
+        content: '' !important;
+        display: inline-block !important;
+        width: 8mm !important;
+        height: 8mm !important;
+        background-color: #3b5bdb !important;
+        border-radius: 50% !important;
+        margin-right: 2mm !important;
+        vertical-align: middle !important;
+        position: relative !important;
+        top: -1mm !important;
+    }
+    
+    /* 섹션 콘텐츠 */
+    .print-section-content {
+        font-size: 9pt !important;
+        line-height: 1.4 !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+    
+    /* 성공 사례 카드 */
+    .print-success-cases {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 3mm !important;
+    }
+    
+    /* 성공 사례 개별 카드 */
+    .print-case-card {
+        background: rgba(255, 255, 255, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 3mm !important;
+        padding: 3mm !important;
+        font-size: 8pt !important;
+        position: relative !important;
+    }
+    
+    /* 인센티브 섹션 */
+    .print-incentives {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 5mm !important;
+    }
+    
+    .print-incentive-card {
+        background: rgba(255, 255, 255, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 3mm !important;
+        padding: 3mm !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+    
+    .print-incentive-icon {
+        width: 15mm !important;
+        height: 15mm !important;
+        background: rgba(59, 91, 219, 0.1) !important;
+        color: #3b5bdb !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 auto 3mm auto !important;
+        font-size: 16pt !important;
+    }
+    
+    /* 제출 단계 */
+    .print-submission {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 3mm !important;
+        grid-column: 1 / -1 !important;
+    }
+    
+    /* 제출 단계 카드 */
+    .print-step-card {
+        background: rgba(255, 255, 255, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 3mm !important;
+        padding: 3mm !important;
+        position: relative !important;
+    }
+    
+    /* 제출 단계 번호 */
+    .print-step-number {
+        background-color: #3b5bdb !important;
+        color: white !important;
+        width: 10mm !important;
+        height: 10mm !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-weight: bold !important;
+        margin: 0 auto 3mm auto !important;
+        font-size: 12pt !important;
+    }
+    
+    /* 참가 방법 섹션 */
+    .print-participation {
+        grid-column: 1 / -1 !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 5mm !important;
+    }
+    
+    /* QR 코드 섹션 */
+    .print-qr-section {
+        grid-column: 1 / -1 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10mm !important;
+        margin-top: 3mm !important;
+        padding: 5mm !important;
+    }
+    
+    .print-qr-code {
+        width: 30mm !important;
+        height: 30mm !important;
+        border: 5mm solid white !important;
+        box-shadow: 0 5mm 10mm rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* 인쇄용 푸터 */
+    .print-footer {
+        grid-column: 1 / -1 !important;
+        text-align: center !important;
+        font-size: 8pt !important;
+        color: #666 !important;
+        border-top: 1px solid rgba(59, 91, 219, 0.2) !important;
+        padding-top: 3mm !important;
+        margin-top: 5mm !important;
+    }
+    
+    /* 작은 아이콘 */
+    .print-icon {
+        width: 5mm !important;
+        height: 5mm !important;
+        background-color: rgba(59, 91, 219, 0.1) !important;
+        border-radius: 50% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-right: 1mm !important;
+        color: #3b5bdb !important;
+        font-size: 7pt !important;
+    }
+    
+    /* 태그 스타일 */
+    .print-tag {
+        display: inline-block !important;
+        background-color: rgba(59, 91, 219, 0.1) !important;
+        color: #3b5bdb !important;
+        padding: 1mm 3mm !important;
+        border-radius: 2mm !important;
+        font-size: 8pt !important;
+        margin-right: 2mm !important;
+        font-weight: bold !important;
+    }
+    
+    /* 하이라이트 텍스트 */
+    .print-highlight {
+        color: #e64980 !important;
+        font-weight: bold !important;
+    }
+    
+    /* 장식용 도형 */
+    .print-shape {
+        position: absolute !important;
+        z-index: 1 !important;
+        opacity: 0.5 !important;
+    }
+    
+    .print-shape-circle {
+        border-radius: 50% !important;
+    }
+    
+    .print-shape-1 {
+        width: 30mm !important;
+        height: 30mm !important;
+        background: rgba(59, 91, 219, 0.1) !important;
+        right: -10mm !important;
+        top: -10mm !important;
+    }
+    
+    .print-shape-2 {
+        width: 20mm !important;
+        height: 20mm !important;
+        background: rgba(230, 73, 128, 0.1) !important;
+        left: -10mm !important;
+        bottom: -10mm !important;
+    }
+}
